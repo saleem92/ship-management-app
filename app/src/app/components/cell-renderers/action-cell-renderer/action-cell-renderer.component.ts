@@ -1,7 +1,10 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
+/**
+ * Renderer to display actions button in the grid
+ */
 @Component({
   selector: 'app-action-cell-renderer',
   templateUrl: './action-cell-renderer.component.html',
@@ -11,13 +14,22 @@ export class ActionCellRendererComponent implements ICellRendererAngularComp {
 
   private parent: any;
   private params: ICellRendererParams | undefined;
-  isEditing: boolean = false;
+  isEditing = false;
 
+  /**
+   * Initialize ag-grid
+   * @param params params from grid
+   */
   agInit(params: ICellRendererParams): void {
     this.parent = params.context.componentParent;
     this.params = params;
   }
 
+  /**
+   * Refresh cells when the current row Index is being edited
+   * @param params updated grid params
+   * @returns boolean to tell update UI or not
+   */
   refresh(params: ICellRendererParams): boolean {
     let isCurrentRowEditing = params.api.getEditingCells().some((cell: any) => {
       return cell.rowIndex === params.node.rowIndex;
@@ -27,6 +39,10 @@ export class ActionCellRendererComponent implements ICellRendererAngularComp {
     return isCurrentRowEditing;
   }
 
+  /**
+   * Trigger appropriate action on type of event
+   * @param action the type of action
+   */
   edit(action: string): void {
     if (!this.params) {
       return;

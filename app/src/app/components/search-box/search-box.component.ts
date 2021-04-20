@@ -10,11 +10,18 @@ export class SearchBoxComponent {
   @Output()
   private searchTextEvent: EventEmitter<String> = new EventEmitter();
 
+  /**
+   * Emit event when filterText needs to be updated
+   * @param event filter text
+   */
   searchText(event: any) {
-    console.log(event)
     this.searchTextEvent.emit(event.target.value);
   }
 
+  /**
+   * Updates search text when backspace is pressed
+   * @param event grid event 
+   */
   onKeyDown(event: any) {
     if (event.keyCode === 8) {
       this.searchText(event);

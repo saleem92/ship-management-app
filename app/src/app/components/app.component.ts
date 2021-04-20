@@ -6,8 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  searchText: string = 'test';
+  searchText: string = '';
 
+  /**
+   * Text search for global filter
+   * @param value search text
+   */
   setSearchText(value: any) {
     this.searchText = value;
   }

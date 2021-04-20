@@ -28,12 +28,16 @@ export class NewShipDialogComponent {
       length: new FormControl(null, [Validators.required, Validators.max(10000), Validators.pattern(/^\d/)])
     });
 
-    if (Object.keys(data).length) {
+    if (data && Object.keys(data).length) {
       this.isUpdate = true;
       this.setData(data);
     }
   }
 
+  /**
+   * Set previously saved data to form fields
+   * @param data previously saved data
+   */
   setData(data: Ship): void {
     const { id, name, code, length, width } = data;
 
@@ -46,6 +50,12 @@ export class NewShipDialogComponent {
     });
   }
 
+  /**
+   * Validate length / width column for double value
+   * @param event keypress event
+   * @param key the type of column (length / width)
+   * @returns 
+   */
   validateDoubleOnKeyPress(event: any, key: string) {
     let charCode = (event.query) ? event.query : event.keyCode;
 

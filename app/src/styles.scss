@@ -6,6 +6,24 @@
 html,
 body {
   margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-dialog-container {
+  padding: unset !important;
+}
+
+.ag-header-cell-menu-button:not(.ag-header-menu-always-show) {
+  opacity: unset;
+}
+
+.ag-header-row-column {
+  font-size: 16px;
 }
 
 .action-button {
@@ -39,25 +57,4 @@ body {
     background-color: #e7e7e7;
     color: black;
   }
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.mat-dialog-container {
-  padding: unset !important;
-}
-
-.ag-header-cell-menu-button:not(.ag-header-menu-always-show) {
-  opacity: unset;
-}
-
-.ag-header-row-column {
-  font-size: 16px;
 }

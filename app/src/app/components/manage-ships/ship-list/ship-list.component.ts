@@ -22,7 +22,6 @@ export class ShipListComponent implements OnInit, OnChanges {
         field: 'id',
         filter: true,
         getQuickFilterText: params => {
-          console.log('quick', params)
           return params.data.id;
         }
       },
@@ -80,6 +79,10 @@ export class ShipListComponent implements OnInit, OnChanges {
   constructor(private appService: AppService,
     private dialog: MatDialog) { }
 
+  /**
+   * Filters text globally in the grid irrespective of column
+   * @param changes angular changes
+   */
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.gridOptions?.api) {
       return;
@@ -87,27 +90,24 @@ export class ShipListComponent implements OnInit, OnChanges {
 
     const { searchText: { previousValue, currentValue } } = changes;
 
-    console.log(previousValue, currentValue, 'current value')
-
     if (previousValue !== currentValue) {
       this.gridOptions.api.setQuickFilter(currentValue);
     }
   }
 
+  /**
+   * fetches data from backend and updates the table rows
+   */
   ngOnInit(): void {
     this.appService.getShips().subscribe((res: Ship[]) => {
       this.rowData = res
     });
   }
 
-  onRowEditingStarted(params: any) {
-    params.api.refreshCells({
-      columns: ['action'],
-      rowNodes: [params.node],
-      force: true
-    });
-  }
-
+  /**
+   * Opens the dialog with previously saved state set to it
+   * @param data the data to update
+   */
   edit(data: Ship) {
     const dialogRef = this.dialog.open(NewShipDialogComponent, {
       data: data
@@ -132,6 +132,10 @@ export class ShipListComponent implements OnInit, OnChanges {
     );
   }
 
+  /**
+   * Patches ships when there's an update
+   * @param data 
+   */
   update(data: Ship) {
     this.appService.updateShipDetails(data).subscribe(res => {
       const index = this.rowData.findIndex(x => x.id === data.id);
@@ -141,6 +145,10 @@ export class ShipListComponent implements OnInit, OnChanges {
     });
   }
 
+  /**
+   * Deletes an item from list of ships
+   * @param id id of the resource
+   */
   delete(id: number) {
     this.appService.deleteShip(id).subscribe(_ => {
       this.rowData = [...this.rowData.filter(x => x.id !== id)];
@@ -149,6 +157,9 @@ export class ShipListComponent implements OnInit, OnChanges {
     });
   }
 
+  /**
+   * Open Dialog when there's a new ship to be created
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(NewShipDialogComponent);
 
