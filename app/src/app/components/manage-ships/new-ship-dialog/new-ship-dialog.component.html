@@ -1,0 +1,62 @@
+<div>
+    <header mat-dialog-title>
+        <span>{{isUpdate ? 'Update' : 'Add'}} Ship</span>
+    </header>
+
+    <div class="form-container">
+        <form class="form" [formGroup]="shipForm">
+            <div class="field-container">
+                <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="name">
+                </mat-form-field>
+
+                <span *ngIf="!shipForm.controls.name.pristine 
+                && shipForm.controls.name.status === 'INVALID'">
+                    Please enter a valid name</span>
+            </div>
+
+            <div class="field-container">
+                <mat-form-field>
+                    <input matInput placeholder="Code" formControlName="code">
+                </mat-form-field>
+
+                <span *ngIf="!shipForm.controls.code.pristine 
+                && shipForm.controls.code.status === 'INVALID'">
+                    Please enter a valid code (ex: AAAA-0000-A0)
+                </span>
+            </div>
+
+            <div class="field-container">
+                <mat-form-field>
+                    <input matInput placeholder="Length (m)" formControlName="length"
+                        (keypress)="validateDoubleOnKeyPress($event, 'length')">
+                </mat-form-field>
+
+                <span *ngIf=" !shipForm.controls.length.pristine && shipForm.controls.length.status==='INVALID'">
+                    Please enter a valid length (in meters)
+                </span>
+            </div>
+
+            <div class=" field-container">
+                <mat-form-field>
+                    <input matInput placeholder="Width (m)" formControlName="width"
+                        (keypress)="validateDoubleOnKeyPress($event, 'width')">
+                </mat-form-field>
+
+                <span *ngIf="!shipForm.controls.width.pristine && shipForm.controls.width.status === 'INVALID'">
+                    Please enter a valid width (in meters)
+                </span>
+            </div>
+        </form>
+
+        <img src="assets/img/ship.jpg" />
+    </div>
+
+    <div class="actions">
+        <button id="submit" mat-raised-button class="submit-btn" (click)="submit()" [disabled]="shipForm.invalid">
+            {{isUpdate ? 'Update' : 'Submit'}}
+        </button>
+        &nbsp;&nbsp;
+        <button mat-raised-button (click)="close()">Cancel</button>
+    </div>
+</div>

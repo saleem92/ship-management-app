@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+  margin: 0;
+}
+
+.action-button {
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  opacity: 0.7;
+  border-radius: 6px;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.edit {
+    background-color: #008cba;
+  }
+
+  &.update {
+    background-color: #4caf50;
+  }
+
+  &.delete {
+    background-color: #f44336;
+  }
+
+  &.cancel {
+    background-color: #e7e7e7;
+    color: black;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-dialog-container {
+  padding: unset !important;
+}
+
+.ag-header-cell-menu-button:not(.ag-header-menu-always-show) {
+  opacity: unset;
+}
+
+.ag-header-row-column {
+  font-size: 16px;
+}

@@ -1,0 +1,32 @@
+<ng-container *ngIf="isEditing else showEditPanel">
+    <button class='action-button update' (click)="edit('update')">
+        <span class="action-button-container">
+            <span>Update</span>
+            <mat-icon>edit</mat-icon>
+        </span>
+    </button>
+
+    &nbsp;
+    <button class='action-button cancel' (click)="edit('cancel')">
+        <span class="action-button-container">
+            <span>Cancel</span>
+            <mat-icon>close</mat-icon>
+        </span>
+    </button>
+</ng-container>
+
+<ng-template #showEditPanel>
+    <button class='action-button edit' (click)="edit('edit')">
+        <span class="action-button-container">
+            <span>Edit</span>
+            <mat-icon>edit</mat-icon>
+        </span>
+    </button>
+    &nbsp;
+    <button class='action-button delete' (click)="edit('delete')">
+        <span class="action-button-container">
+            <span>Delete</span>
+            <mat-icon>delete</mat-icon>
+        </span>
+    </button>
+</ng-template>

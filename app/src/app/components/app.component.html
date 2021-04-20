@@ -1,0 +1,8 @@
+<app-header></app-header>
+
+<app-search-box (searchTextEvent)="setSearchText($event)"></app-search-box>
+<!-- <add-ship></add-ship> -->
+
+<div class="container-m1">
+    <app-ship-list [searchText]="searchText"></app-ship-list>
+</div>

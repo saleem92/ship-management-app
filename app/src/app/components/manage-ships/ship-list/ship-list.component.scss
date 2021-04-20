@@ -1,0 +1,26 @@
+div {
+    position: relative;
+
+    .grid {
+        top: 50px;
+        height: 400px;
+        width: 80%;
+        margin: auto;
+    }
+}
+
+.material-icons {
+    font-size: 80px;
+    background: #ca0dc5;
+    position: absolute;
+    right: 0px;
+    height: 80px;
+    width: 80px;
+    z-index: 1;
+    color: white;
+    top: -70px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

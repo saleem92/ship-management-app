@@ -1,0 +1,26 @@
+div {
+    background: #4351af;
+}
+
+.mat-icon {
+    height: unset;
+    width: unset;
+    flex: 0 1 2%;
+    font-size: 80px;
+    color: white;
+}
+header {
+    font-size: 28px;
+    line-height: 70px;
+    color: white;
+    width: 94%;
+    background: #008cba99;
+    position: relative;
+    padding-left: 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
